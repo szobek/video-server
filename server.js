@@ -47,11 +47,9 @@ app.get("/videos", async (req, res) => {
     const [results, fields] = await connect.query(
       'SELECT * FROM `videos`'
     );
-  
-    console.log(results); 
-    res.header("Content-Type", "application/json");
+    res.set('X-Data', "valami");
     res.status(200);
-    res.send(results);
+    res.sendFile(path.join(__dirname, "public", "list.html"));
   } catch (err) {
     console.log(err);
   }
