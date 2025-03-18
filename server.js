@@ -3,21 +3,18 @@ const path = require('path');
 const fs = require('fs');
 const app = express();
 const PORT = 3000;
-
+const connect=require('./connect')
 
 app.use(express.json());
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "home.html"));
-  
 });
 
 app.get("/video", (req, res) => {
   const videoPath = path.join(__dirname, "videos", "sample_.mp4");
   const videoStat = fs.statSync(videoPath);
   const fileSize = videoStat.size;
-
-  
   const range = req.headers.range;
   if (!range) {
     return res.status(416).send("Requires Range header");
@@ -46,7 +43,8 @@ app.listen(PORT, () => {
 
 app.get("/videos", async (req, res) => {
   try {
-    const [results, fields] = await mysql_con.query(
+    
+    const [results, fields] = await connect.query(
       'SELECT * FROM `videos`'
     );
   
