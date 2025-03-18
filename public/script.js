@@ -1,3 +1,3 @@
 const urlParams = new URLSearchParams(window.location.search);
-
-console.log(urlParams.get('video'));
+const id=urlParams.get('video')
+document.getElementById('videoid').innerText=id
