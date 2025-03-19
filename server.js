@@ -2,17 +2,21 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const app = express();
+const routes = require('./routes');
 const PORT = 3000;
 const connect=require('./connect')
 
 app.use(express.static(path.join(__dirname, 'public')));
+routes(app);
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "list.html"));
 });
 
-app.get("/video", (req, res) => {
-  const videoPath = path.join(__dirname, 'videos', 'sample.mp4');
+app.get("/video/:type/:id", (req, res) => {
+  const type = req.params.type;
+  const id = req.params.id;
+  const videoPath = path.join(__dirname, 'videos', `${type}_${id}.mp4`);
   const stat = fs.statSync(videoPath);
   const fileSize = stat.size;
   const range = req.headers.range;
