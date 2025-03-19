@@ -49,7 +49,7 @@ app.get("/videos", async (req, res) => {
     );
     res.set('X-Data', "valami");
     res.status(200);
-    res.sendFile(path.join(__dirname, "public", "list.html"));
+    res.sendFile(path.join(__dirname, "public/list", "list.html"));
   } catch (err) {
     console.log(err);
   }
