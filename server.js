@@ -5,10 +5,10 @@ const app = express();
 const PORT = 3000;
 const connect=require('./connect')
 
-app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "home.html"));
+  res.sendFile(path.join(__dirname, "views", "list.html"));
 });
 
 app.get("/video", (req, res) => {
@@ -49,7 +49,7 @@ app.get("/videos", async (req, res) => {
     );
     res.set('X-Data', "valami");
     res.status(200);
-    res.sendFile(path.join(__dirname, "public/list", "list.html"));
+    res.sendFile(path.join(__dirname, "public/views", "list.html"));
   } catch (err) {
     console.log(err);
   }

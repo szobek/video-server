@@ -2,6 +2,7 @@
   "dependencies": {
     "express": "^4.21.2",
     "mysql2": "^3.13.0",
+    "node-sass": "^9.0.0",
     "sass": "^1.85.1"
   }
 }
