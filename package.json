@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "migrate":"node migrate.js",
     "start": "node server.js",
     "build-css": "gulp build",
     "watch-css": "gulp watch"
