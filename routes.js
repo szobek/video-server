@@ -1,6 +1,5 @@
 const connect = require('./connect')
 const fs = require('fs');
-const { type } = require('os');
 const path = require('path');
 
 const convertResult = (results) => {
@@ -61,10 +60,9 @@ module.exports = function (app) {
   });
 
 
-  app.get("/video/:type/:id", (req, res) => {
-    const type = req.params.type;
-    const id = req.params.id;
-    const videoPath = path.join(__dirname, 'videos', `${type}_${id}.mp4`);
+  app.get("/video/:name", (req, res) => {
+    const videoName = req.params.name;
+    const videoPath = path.join(__dirname, 'videos', `${videoName}.mp4`);
     const stat = fs.statSync(videoPath);
     const fileSize = stat.size;
     const range = req.headers.range;

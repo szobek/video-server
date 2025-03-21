@@ -16,7 +16,7 @@ const createVideo = (movie_data) => {
     const type = movie_data.type
     const id = movie_data.ID
     const element = document.createElement("video");
-    element.src = `/video/${type}/${id}`;
+    element.src = `/video/${movie_data.name.split(".")[0]}`;
     element.controls = false;
     element.muted = true;
     element.dataset.name=movie_data.name
