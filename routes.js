@@ -1,5 +1,6 @@
 const connect = require('./connect')
 const fs = require('fs');
+const { type } = require('os');
 const path = require('path');
 
 const convertResult = (results) => {
@@ -14,11 +15,11 @@ const convertResult = (results) => {
 
     for (let mov of movie_data) {
       if (mov.type === movie.type) {
-        mov.movies.push({ 
-          ID: movie.ID, 
+        mov.movies.push({
+          ID: movie.ID,
           name: movie.name,
           description: movie.description,
-
+          type: movie.type
         });
       }
     }

@@ -3,6 +3,9 @@ fetch("/test")
     .then(data => {
        for (let movie_data of data) {
             createTitle(movie_data);
+            for (let movie of movie_data.movies) {
+                createVideo(movie);
+            }
         }
         addEventToVideos();
     });
