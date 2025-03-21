@@ -1,4 +1,6 @@
-.list-wrapper {
+$rowBg:rgb(193, 202, 231);
+
+.row {
     display: flex;
     flex-wrap: wrap;
     justify-content: start;
@@ -6,18 +8,18 @@
     gap: 20px;
 
     h1 {
-        color: rgb(42, 42, 43);
+        color: rgb(96, 96, 102);
     }
 
-    .video-list-wrapper {
-      
-        video {
-            width: 300px;
-            height: auto;
-            border-radius: 10px;
-            border: 1px solid #36f;
-            cursor: pointer;
-        }
-
+    video {
+        width: 300px;
+        height: auto;
+        border-radius: 10px;
+        border: 1px solid #36f;
+        cursor: pointer;
+        margin: 0 20px;
     }
+&.colored{
+    background-color: $rowBg;
+}
 }
