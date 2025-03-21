@@ -19,6 +19,7 @@ const createVideo = (movie_data) => {
     element.src = `/video/${type}/${id}`;
     element.controls = false;
     element.muted = true;
+    element.dataset.name=movie_data.name
     return element;
 }
 const createTitle = (movie_data) => {
@@ -64,6 +65,10 @@ const addEventToVideos = () => {
         video.addEventListener("mouseleave", () => {
             video.currentTime = 0;//rewind video to start
             video.pause();
+        });
+
+        video.addEventListener("click", () => {
+            window.location.href = "/";
         });
     }
 }
