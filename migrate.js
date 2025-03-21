@@ -1,6 +1,6 @@
 const connect = require('./connect');
 
-const sql = `CREATE TABLE IF NOT EXISTS videos2 (
+const sql = `CREATE TABLE IF NOT EXISTS videos (
     ID INT unsigned PRIMARY KEY AUTO_INCREMENT,
     name text NOT NULL,
     description text NOT NULL,
