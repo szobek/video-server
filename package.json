@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "seed":"node seeder.js",
     "migrate":"node migrate.js",
     "start": "node server.js",
     "build-css": "gulp build",
