@@ -1,23 +1,10 @@
 fetch("/test")
     .then(response => response.json())
     .then(data => {
-       
-        for (let movie_data of data) {
-            createVideo(movie_data);
+       for (let movie_data of data) {
+            createTitle(movie_data);
         }
-        const video_array = document.getElementsByTagName("video");
-
-        for (let video of video_array) {
-
-            video.addEventListener("mouseenter", () => {
-                video.play();
-            });
-
-            video.addEventListener("mouseleave", () => {
-                video.currentTime = 0;//rewind video to start
-                video.pause();
-            });
-        }
+        addEventToVideos();
     });
 const createVideo = (movie_data) => {
     const type = movie_data.type
@@ -26,5 +13,26 @@ const createVideo = (movie_data) => {
     element.src = `/video/${type}/${id}`;
     element.controls = false;
     element.muted = true;
-    document.getElementById("test").appendChild(element);
+    document.body.appendChild(element);
+}
+const createTitle = (movie_data) => {    
+    const element = document.createElement("h1");
+    element.textContent = movie_data.type;
+    document.body.appendChild(element);
+}
+
+const addEventToVideos = () => {
+    const video_array = document.getElementsByTagName("video");
+
+    for (let video of video_array) {
+
+        video.addEventListener("mouseenter", () => {
+            video.play();
+        });
+
+        video.addEventListener("mouseleave", () => {
+            video.currentTime = 0;//rewind video to start
+            video.pause();
+        });
+    }
 }
